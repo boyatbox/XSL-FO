@@ -67,3 +67,17 @@ The formatting engine uses the layout master set to create a page. Then it adds 
   - fo:region-body
 
 - use extent property to set height and width of non-body element.
+
+### page-sequence:
+
+`<fo:flow flow-name="xsl-region-body">`
+flow-name maps the region of the page where the content will be placed.
+Possible values of flow name:
+
+- xsl-region-body
+- xsl-region-start
+- xsl-region-end
+- xsl-region-before
+- xsl-region-after
+
+The fo:flow element must contain block-level formatting object elements. The most basic of these is fo:block . Others include fo:block-container , fo:list-block , fo:table , and fo:table-and-caption . We'll begin with the most basic, fo:block. A fo:block can contain a combination of raw text and formatting objects such as fo:external-graphic, fo:inline, fo:page-number, fo:footnote, and even other fo:block elements.
