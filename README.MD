@@ -19,6 +19,8 @@
 - http://www.herongyang.com/XSL-FO/
 - https://docstore.mik.ua/orelly/xml/xmlnut/ch13_01.htm
 - https://docs.oracle.com/cd/B40078_02/doc/bi.1013/b40017/T114602T418798.htm
+- https://www.xmlpdf.com/different-first-page.html
+- https://www.data2type.de/en/xml-xslt-xslfo/xsl-fo/xsl-fo-introduction/page-layout
 
 ---
 
@@ -52,6 +54,8 @@ The fo:root element must contain two things:
 Contains elements describing the overall layout of the pages themselves, that is, how large the pages are, whether they're in landscape or portrait mode, how wide the margins are.
 
 ### fo:page-sequence:
+
+Page sequence is collection of pages that has same page characteristics.
 
 Contains the actual text that will be placed on the pages, along with the instructions for formatting.
 
