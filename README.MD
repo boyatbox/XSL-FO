@@ -18,6 +18,7 @@
 - https://www.netjstech.com/2015/07/how-to-create-pdf-from-xml-using-apache-fop.html
 - http://www.herongyang.com/XSL-FO/
 - https://docstore.mik.ua/orelly/xml/xmlnut/ch13_01.htm
+- https://docs.oracle.com/cd/B40078_02/doc/bi.1013/b40017/T114602T418798.htm
 
 ---
 

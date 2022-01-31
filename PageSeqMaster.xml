@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns="http://www.w3.org/1999/XSL/Format">
+
+    <layout-master-set>
+
+        <!-- page master for the first page -->
+        <simple-page-master master-name="first-page" page-width="8.5in" page-height="8in">
+            <region-body margin="3cm" region-name="body" />
+            <region-after extent="2cm" region-name="first-page-footer" />
+        </simple-page-master>
+
+        <!-- page master for all others pages -->
+        <simple-page-master master-name="other-page" page-width="8.5in" page-height="8in">
+            <region-body margin="3cm" region-name="body" />
+            <region-after extent="2cm" region-name="other-page-footer" />
+        </simple-page-master>
+
+        <page-sequence-master master-name="pages">
+
+            <repeatable-page-master-alternatives>
+                <!-- if page-position="first" choose the simple-page-master with master-name="first-page" -->
+                <conditional-page-master-reference page-position="first" master-reference="first-page" />
+
+                <!-- otherwise choose the simple-page-master with master-name="other-page" -->
+                <conditional-page-master-reference master-reference="other-page" />
+            </repeatable-page-master-alternatives>
+        </page-sequence-master>
+    </layout-master-set>
+
+    <!-- the master-reference on the page-sequence is to the page-sequence-master above -->
+    <page-sequence master-reference="pages">
+
+        <!-- if we are on the first page, this footer will show -->
+        <static-content flow-name="first-page-footer">
+            <block>
+                page
+                <page-number />
+            </block>
+            <block>this is the first page footer</block>
+        </static-content>
+
+        <!-- if we are not on the first page, this footer will show -->
+        <static-content flow-name="other-page-footer">
+            <block>
+                page
+                <page-number />
+            </block>
+            <block>this is the other page footer</block>
+        </static-content>
+
+        <flow flow-name="body">
+
+            <block>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pretium tincidunt nunc. Fusce consequat fermentum mi. Aliquam consectetuer lorem sit amet elit. Curabitur adipiscing facilisis tellus. Quisque laoreet lacinia lectus. Nam euismod leo id massa. Maecenas tempus, enim ut facilisis porttitor, nunc purus fermentum nibh, ut dictum ligula purus et neque. Praesent iaculis. Nam eleifend tortor vel metus. In neque nulla, accumsan sit amet, porttitor vel, mattis eu, augue. Maecenas sagittis egestas nulla. Nam condimentum augue at felis. Vestibulum fringilla laoreet dui. Morbi tristique molestie lectus. Aliquam nunc neque, hendrerit sed, eleifend id, tempus nec, sem. Donec eleifend faucibus nibh. Etiam imperdiet, ante quis feugiat sollicitudin, lacus erat dictum lectus, vitae vulputate pede magna et nisl. Suspendisse tempus tortor non mauris. Praesent ultricies mattis nunc. Nunc id turpis non nisl tincidunt congue.
+      </block>
+
+            <block>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pretium tincidunt nunc. Fusce consequat fermentum mi. Aliquam consectetuer lorem sit amet elit. Curabitur adipiscing facilisis tellus. Quisque laoreet lacinia lectus. Nam euismod leo id massa. Maecenas tempus, enim ut facilisis porttitor, nunc purus fermentum nibh, ut dictum ligula purus et neque. Praesent iaculis. Nam eleifend tortor vel metus. In neque nulla, accumsan sit amet, porttitor vel, mattis eu, augue. Maecenas sagittis egestas nulla. Nam condimentum augue at felis. Vestibulum fringilla laoreet dui. Morbi tristique molestie lectus. Aliquam nunc neque, hendrerit sed, eleifend id, tempus nec, sem. Donec eleifend faucibus nibh. Etiam imperdiet, ante quis feugiat sollicitudin, lacus erat dictum lectus, vitae vulputate pede magna et nisl. Suspendisse tempus tortor non mauris. Praesent ultricies mattis nunc. Nunc id turpis non nisl tincidunt congue.
+      </block>
+            <block>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pretium tincidunt nunc. Fusce consequat fermentum mi. Aliquam consectetuer lorem sit amet elit. Curabitur adipiscing facilisis tellus. Quisque laoreet lacinia lectus. Nam euismod leo id massa. Maecenas tempus, enim ut facilisis porttitor, nunc purus fermentum nibh, ut dictum ligula purus et neque. Praesent iaculis. Nam eleifend tortor vel metus. In neque nulla, accumsan sit amet, porttitor vel, mattis eu, augue. Maecenas sagittis egestas nulla. Nam condimentum augue at felis. Vestibulum fringilla laoreet dui. Morbi tristique molestie lectus. Aliquam nunc neque, hendrerit sed, eleifend id, tempus nec, sem. Donec eleifend faucibus nibh. Etiam imperdiet, ante quis feugiat sollicitudin, lacus erat dictum lectus, vitae vulputate pede magna et nisl. Suspendisse tempus tortor non mauris. Praesent ultricies mattis nunc. Nunc id turpis non nisl tincidunt congue.
+      </block>
+            <block>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pretium tincidunt nunc. Fusce consequat fermentum mi. Aliquam consectetuer lorem sit amet elit. Curabitur adipiscing facilisis tellus. Quisque laoreet lacinia lectus. Nam euismod leo id massa. Maecenas tempus, enim ut facilisis porttitor, nunc purus fermentum nibh, ut dictum ligula purus et neque. Praesent iaculis. Nam eleifend tortor vel metus. In neque nulla, accumsan sit amet, porttitor vel, mattis eu, augue. Maecenas sagittis egestas nulla. Nam condimentum augue at felis. Vestibulum fringilla laoreet dui. Morbi tristique molestie lectus. Aliquam nunc neque, hendrerit sed, eleifend id, tempus nec, sem. Donec eleifend faucibus nibh. Etiam imperdiet, ante quis feugiat sollicitudin, lacus erat dictum lectus, vitae vulputate pede magna et nisl. Suspendisse tempus tortor non mauris. Praesent ultricies mattis nunc. Nunc id turpis non nisl tincidunt congue.
+      </block>
+            <block>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pretium tincidunt nunc. Fusce consequat fermentum mi. Aliquam consectetuer lorem sit amet elit. Curabitur adipiscing facilisis tellus. Quisque laoreet lacinia lectus. Nam euismod leo id massa. Maecenas tempus, enim ut facilisis porttitor, nunc purus fermentum nibh, ut dictum ligula purus et neque. Praesent iaculis. Nam eleifend tortor vel metus. In neque nulla, accumsan sit amet, porttitor vel, mattis eu, augue. Maecenas sagittis egestas nulla. Nam condimentum augue at felis. Vestibulum fringilla laoreet dui. Morbi tristique molestie lectus. Aliquam nunc neque, hendrerit sed, eleifend id, tempus nec, sem. Donec eleifend faucibus nibh. Etiam imperdiet, ante quis feugiat sollicitudin, lacus erat dictum lectus, vitae vulputate pede magna et nisl. Suspendisse tempus tortor non mauris. Praesent ultricies mattis nunc. Nunc id turpis non nisl tincidunt congue.
+      </block>
+
+        </flow>
+    </page-sequence>
+</root>
