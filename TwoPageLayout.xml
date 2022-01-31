@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="utf-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <fo:layout-master-set>
+        <fo:simple-page-master master-name="cover" margin="0.5in">
+            <fo:region-body region-name="body" background-color="wheat" text-align="center" />
+        </fo:simple-page-master>
+        <fo:simple-page-master master-name="content" margin="0.5in">
+            <fo:region-body region-name="body" margin-top="0.5in" column-count="2" />
+            <fo:region-before region-name="header" extent="0.25in" />
+        </fo:simple-page-master>
+    </fo:layout-master-set>
+    <fo:page-sequence master-reference="cover">
+        <fo:flow flow-name="body">
+            <fo:block padding="1in" color="green" text-align="center">This is cover page with just body region</fo:block>
+        </fo:flow>
+    </fo:page-sequence>
+    <fo:page-sequence master-reference="content">
+        <fo:static-content flow-name="header">
+            <fo:block color="royalblue" border-bottom-width="1px" border-bottom-style="solid" text-align="start">This is a header region</fo:block>
+        </fo:static-content>
+        <fo:flow flow-name="body">
+            <fo:block color="olivedrab" text-align="center">This is the body region</fo:block>
+        </fo:flow>
+    </fo:page-sequence>
+</fo:root>
