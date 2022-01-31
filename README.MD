@@ -21,6 +21,22 @@
 
 ---
 
+```
+<?xml version="1.1" encoding="utf-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format1">
+    <fo:layout-master-set>
+        <fo:simple-page-master master-name="my_page" margin="1in">
+            <fo:region-body />
+        </fo:simple-page-master>
+    </fo:layout-master-set>
+    <fo:page-sequence master-reference="my_page">
+        <fo:flow flow-name="xsl-region-body">
+            <fo:block color="red" font-weight="bold" background-color="pink" padding="10pt">Hello world!</fo:block>
+        </fo:flow>
+    </fo:page-sequence>
+</fo:root>
+```
+
 ### fo:root:
 
 The root element of all XSL-FO documents is fo:root. This element normally declares the fo prefix, which **must be** mapped to the http://www.w3.org/1999/XSL/Format namespace URI. As always, the prefix can change as long as the URI stays the same.
