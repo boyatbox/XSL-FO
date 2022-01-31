@@ -5,22 +5,20 @@
 
         <!-- page master for the first page -->
         <simple-page-master master-name="first-page" page-width="8.5in" page-height="8in">
-            <region-body margin="3cm" region-name="body" />
-            <region-after extent="2cm" region-name="first-page-footer" />
+            <region-body margin="1in" region-name="body" />
+            <region-after extent="1in" region-name="first-page-footer" />
         </simple-page-master>
 
         <!-- page master for all others pages -->
         <simple-page-master master-name="other-page" page-width="8.5in" page-height="8in">
-            <region-body margin="3cm" region-name="body" />
-            <region-after extent="2cm" region-name="other-page-footer" />
+            <region-body margin="2in" region-name="body" />
+            <region-after extent="1in" region-name="other-page-footer" />
         </simple-page-master>
 
         <page-sequence-master master-name="pages">
-
             <repeatable-page-master-alternatives>
                 <!-- if page-position="first" choose the simple-page-master with master-name="first-page" -->
                 <conditional-page-master-reference page-position="first" master-reference="first-page" />
-
                 <!-- otherwise choose the simple-page-master with master-name="other-page" -->
                 <conditional-page-master-reference master-reference="other-page" />
             </repeatable-page-master-alternatives>
@@ -29,7 +27,6 @@
 
     <!-- the master-reference on the page-sequence is to the page-sequence-master above -->
     <page-sequence master-reference="pages">
-
         <!-- if we are on the first page, this footer will show -->
         <static-content flow-name="first-page-footer">
             <block>
