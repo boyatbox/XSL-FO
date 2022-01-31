@@ -5,6 +5,22 @@
 
 ---
 
+### Links:
+
+- https://www.w3.org/TR/xsl/
+- http://www.renderx.com/tutorial.html
+- http://structuredauthoring.net/xml/readings/6_Introduction_xsl_fo.html
+- https://www.data2type.de/en/xml-xslt-xslfo/xsl-fo/xsl-fo-introduction/blocks
+- http://www.w3big.com/xslfo/default.html
+- http://www.cafeconleche.org/books/bible3/chapters/ch16.html
+- https://www.antennahouse.com/xsl-fo-samples
+- https://www.iro.umontreal.ca/~lapalme/ForestInsteadOfTheTrees/HTML/ch05s04.html
+- https://www.netjstech.com/2015/07/how-to-create-pdf-from-xml-using-apache-fop.html
+- http://www.herongyang.com/XSL-FO/
+- https://docstore.mik.ua/orelly/xml/xmlnut/ch13_01.htm
+
+---
+
 ### fo:root:
 
 The root element of all XSL-FO documents is fo:root. This element normally declares the fo prefix, which **must be** mapped to the http://www.w3.org/1999/XSL/Format namespace URI. As always, the prefix can change as long as the URI stays the same.
