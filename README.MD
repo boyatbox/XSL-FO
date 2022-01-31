@@ -45,3 +45,25 @@ The fo:root element must contain two things:
 
 - a `fo:layout-master-set` and
 - a `fo:page-sequence`
+
+### fo:layout-master-set:
+
+Contains elements describing the overall layout of the pages themselves, that is, how large the pages are, whether they're in landscape or portrait mode, how wide the margins are.
+
+### fo:page-sequence:
+
+Contains the actual text that will be placed on the pages, along with the instructions for formatting.
+
+The formatting engine uses the layout master set to create a page. Then it adds content to the page from the fo:page-sequence until the page is full. Then it creates the next page in the sequence and places the next batch of content on that page. This process continues until all the content has been positioned.
+
+#### Child elements of the fo:simple-page-master element:
+
+- fo:region-body is required other regions are optional.
+
+  - fo:region-start
+  - fo:region-end
+  - fo:region-before
+  - fo:region-after
+  - fo:region-body
+
+- use extent property to set height and width of non-body element.

@@ -1,7 +1,8 @@
 <?xml version="1.1" encoding="utf-8"?>
-<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format1">
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
     <fo:layout-master-set>
         <fo:simple-page-master master-name="my_page" margin="1in">
+            docstore.mik.ua/orelly/xml/xmlnut/ch13_03.htm
             <fo:region-body />
         </fo:simple-page-master>
     </fo:layout-master-set>
