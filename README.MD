@@ -71,9 +71,10 @@ The formatting engine uses the layout master set to create a page. Then it adds 
 ### page-sequence:
 
 `<fo:flow flow-name="xsl-region-body">`
-flow-name maps the region of the page where the content will be placed.
-one fo:page-sequence can not have multiple "fo:flow" declaration inside
-the content of the flow will be poured into the page body region. If the content need more space page will be added until all content of flow is exhausted.
+
+- flow-name maps the region of the page where the content will be placed.
+- one fo:page-sequence can not have multiple "fo:flow" declaration inside
+- the content of the flow will be poured into the page body region. If the content need more space page will be added until all content of flow is exhausted.
 
 default values of flow name:
 
