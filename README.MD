@@ -106,3 +106,56 @@ Following are the child possible elements of the fo:simple-page-master element:
 - any custom name can be used
 
 The fo:flow element must contain block-level formatting object elements. The most basic of these is fo:block . Others include fo:block-container , fo:list-block , fo:table , and fo:table-and-caption . We'll begin with the most basic, fo:block. A fo:block can contain a combination of raw text and formatting objects such as fo:external-graphic, fo:inline, fo:page-number, fo:footnote, and even other fo:block elements.
+
+### Using different layouts for different pages:
+
+It is possible to define different page layouts for different pages. This can be done in two possible ways, either by assigning different page masters to different page sequences, or by using a page-master-alternatives element which chooses from a set of simple-page-master elements based on criteria such as the current page number.
+
+
+## Method 1: Using different page masters for each page sequence:
+
+```
+<layout-master-set>
+
+<simple-page-master master-name="front-page" margin="1.5cm" page-height="297mm" page-width="210mm">
+    <region-body region-name="body" margin="0.75cm 0.5cm 0.75cm 3cm"/>
+    <region-before region-name="header" extent="2.5cm"/>
+    <region-after region-name="footer" extent="1cm"/>
+    <region-start extent="1cm" background-color="#eeeeee"/>
+</simple-page-master>
+
+<simple-page-master master-name="toc-page" margin="1.5cm" >
+    <region-body column-count="1" region-name="body" margin="0.75cm 0.5cm 1cm 3cm" margin-left="2cm" margin-right="1.5cm" />
+    <region-before region-name="header" extent="1cm"/>
+    <region-after region-name="footer" extent="0.75cm"/>
+    <region-start extent="2cm" />
+    <region-end region-name="end" extent="1.5cm" />
+</simple-page-master>
+
+</layout-master-set>
+```
+
+Content is allocated to the two sections of the document using two separate page-sequences
+
+```
+<page-sequence master-reference="front-page">
+    <flow flow-name="body">
+        <block>
+            content that appears in the body of the front page
+        </block>
+    </flow>
+</page-sequence>
+<page-sequence master-reference="toc-page">
+    <flow flow-name="body">
+        <block>
+            content that appears in the table of contents
+        </block>
+    </flow>
+</page-sequence>
+```
+
+When using this approach content from one flow always appears on pages with the same layout. Flowing content across different page layouts is described in the next section.
+
+## Method 2: Using page master alternatives / page-sequence-master:
+
+Often it is desirable to have content flow continuously across pages with different layouts. To make content from a `single flow element span multiple pages with different page layouts` we use a page-sequence-master element. This element contains a repeatable-page-master-alternatives element, which in turn contains a set of conditional-page-master-reference elements.
