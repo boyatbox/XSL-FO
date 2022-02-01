@@ -18,7 +18,6 @@
 - http://www.cafeconleche.org/books/bible3/chapters/ch16.html
 - https://www.antennahouse.com/xsl-fo-samples
 - https://www.iro.umontreal.ca/~lapalme/ForestInsteadOfTheTrees/HTML/ch05s04.html
-- https://www.netjstech.com/2015/07/how-to-create-pdf-from-xml-using-apache-fop.html
 - http://www.herongyang.com/XSL-FO/
 - https://docstore.mik.ua/orelly/xml/xmlnut/ch13_01.htm
 - https://docs.oracle.com/cd/B40078_02/doc/bi.1013/b40017/T114602T418798.htm
