@@ -114,6 +114,8 @@ It is possible to define different page layouts for different pages. This can be
 
 ## Method 1: Using different page masters for each page sequence:
 
+With this approach content from one single flow element always appears on pages with the same layout.
+
 ```
 <layout-master-set>
 
@@ -154,8 +156,44 @@ Content is allocated to the two sections of the document using two separate page
 </page-sequence>
 ```
 
-When using this approach content from one flow always appears on pages with the same layout. Flowing content across different page layouts is described in the next section.
+When using this approach `content from one flow always appears on pages with the same layout`. Flowing content across different page layouts is described in the next section.
 
 ## Method 2: Using page master alternatives / page-sequence-master:
 
 Often it is desirable to have content flow continuously across pages with different layouts. To make content from a `single flow element span multiple pages with different page layouts` we use a page-sequence-master element. This element contains a repeatable-page-master-alternatives element, which in turn contains a set of conditional-page-master-reference elements.
+
+#### Page masters for three different layouts:
+```
+<simple-page-master master-name="chapter-odd-no-header">
+    <region-body region-name="body" margin="2.5cm 2.5cm 2.5cm 4.0cm"/>
+    <region-after region-name="footer-odd" extent="1.5cm" display-align="before"/>
+</simple-page-master>
+
+<simple-page-master master-name="chapter-even">
+    <region-body region-name="body" margin="2.5cm 2.5cm 2.5cm 4.0cm" column-count="1"/>
+    <region-before region-name="header-even" extent="1.5cm" display-align="after"/>
+    <region-after region-name="footer-even" extent="1.5cm" display-align="before"/>
+</simple-page-master>
+
+<simple-page-master master-name="chapter-odd">
+    <region-body region-name="body" margin="2.5cm 2.5cm 2.5cm 4.0cm"/>
+    <region-before region-name="header-odd" extent="1.5cm" display-align="after"/>
+    <region-after region-name="footer-odd" extent="1.5cm" display-align="before"/>
+</simple-page-master>
+```
+
+#### The page-sequencemaster element:
+```
+<page-sequence-master master-name="chapter" >
+    <repeatable-page-master-alternatives>
+        <conditional-page-master-reference page-position="first" master-reference="chapter-odd-no-header"/>
+        <conditional-page-master-reference odd-or-even="odd" master-reference="chapter-odd"/>
+        <conditional-page-master-reference odd-or-even="even" master-reference="chapter-even"/>
+    </repeatable-page-master-alternatives>
+</page-sequence-master>
+```
+
+When formatting content from a page-sequence which has flow-name="chapter", fomatter engine looks at each of the conditional-page-master-reference elements and chooses which one will be active for the current page. This is done by evaluating conditions specified with the page-position attribute. As a page is created,    each conditional-page-master-reference is considered in turn, starting from the first one. The first one found whose conditions are satisfied will determine  the page master for the current page. Since alternatives are considered in the order in which they appear in the FO, the order in which the alternatives are listed is important.
+
+When the first page of the chapter is being created, the page-position="first" condition is true, so the first conditional-page-master-reference will be chosen because it has page-position = "first". This has master-reference = "chapter-odd-no-header", so the simple-page-master with master-name = "chapter-odd-no-header" becomes the active page master for the first page of the chapter. When the second page of the chapter is being created, the page-position="first" is no longer true so the conditions on the next conditional-page-master-reference will be evaluated.
+
