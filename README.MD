@@ -20,6 +20,7 @@
 - https://docstore.mik.ua/orelly/xml/xmlnut/ch13_01.htm
 - https://docs.oracle.com/cd/B40078_02/doc/bi.1013/b40017/T114602T418798.htm
 - https://www.xmlpdf.com/different-first-page.html
+- http://www.xmlpdf.com/builds/ibex.pdf
 - https://www.data2type.de/en/xml-xslt-xslfo/xsl-fo/xsl-fo-introduction/page-layout
 
 ---
@@ -53,6 +54,19 @@ The fo:root element must contain two things:
 
 Contains elements describing the overall layout of the pages themselves, that is, how large the pages are, whether they're in landscape or portrait mode, how wide the margins are.
 
+### fo:simple-page-master:
+
+Following are the child possible elements of the fo:simple-page-master element:
+
+- fo:region-start
+- fo:region-end
+- fo:region-before
+- fo:region-after
+- fo:region-body
+
+- fo:region-body is required other regions are optional.
+- use extent property to set height and width of non-body element.
+
 ### fo:page-sequence:
 
 Page sequence is collection of pages that has same page characteristics.
@@ -60,18 +74,6 @@ Page sequence is collection of pages that has same page characteristics.
 Contains the actual text that will be placed on the pages, along with the instructions for formatting.
 
 The formatting engine uses the layout master set to create a page. Then it adds content to the page from the fo:page-sequence until the page is full. Then it creates the next page in the sequence and places the next batch of content on that page. This process continues until all the content has been positioned.
-
-#### Child elements of the fo:simple-page-master element:
-
-- fo:region-body is required other regions are optional.
-
-  - fo:region-start
-  - fo:region-end
-  - fo:region-before
-  - fo:region-after
-  - fo:region-body
-
-- use extent property to set height and width of non-body element.
 
 ### page-sequence:
 
