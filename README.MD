@@ -1,7 +1,6 @@
-## XSL-FO:
+## XSL-FO Processor:
 
-- https://xmlgraphics.apache.org/fop/
-- COMMAND: `./fop inputs/hello.xml inputs/hello.pdf`
+- [Apache FOP](https://xmlgraphics.apache.org/fop/)
 
 ---
 
