@@ -31,6 +31,9 @@
                 9
                 10
                 11
+                <block>
+                    <leader leader-pattern="rule" />
+                </block>
                 12
                 13
                 14
