@@ -93,6 +93,8 @@ Following are the child possible elements of the fo:simple-page-master element:
 - one fo:page-sequence can not have multiple "fo:flow" declaration inside
 - the content of the flow will be poured into the page body region. If the content need more space page will be added until all content of flow is exhausted.
 - In order for the content contained in the flow to appear on the page, the flow-name of the flow should match a region-name of one of the regions on the page.
+- Within the flow element the contents flow and are broken up into pages, if the volume exceeds the capacity of a page. The content of this element determines the line and page break and thus also the number of generated pages.
+- The static-content element determines the static contents of page regions outside the region which takes the running content in. The content of these regions is not involved in page and line breaks. For example, if the content of a static-content is too big for one page, the formatter won' t generate a page break but either stop the formatting or output a warning which shows the overflow in the given region.
 
 #### default values of flow name:
 
