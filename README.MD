@@ -5,6 +5,10 @@
 
 ---
 
+<img alt="Overview of OEIS tools" src="fo-struct.png" width="75%">
+
+---
+
 ### Links:
 
 - https://www.w3.org/TR/xsl/
