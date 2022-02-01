@@ -5,7 +5,7 @@
 
 ---
 
-<img alt="Overview of OEIS tools" src="fo-struct.png" width="50%">
+<img alt="Overview of OEIS tools" src="fo-struct.svg" width="50%">
 
 ---
 
