@@ -84,8 +84,9 @@ When FO processor finds a page-sequence element it looks at the list of known si
 - flow-name maps the region of the page where the content will be placed.
 - one fo:page-sequence can not have multiple "fo:flow" declaration inside
 - the content of the flow will be poured into the page body region. If the content need more space page will be added until all content of flow is exhausted.
+- In order for the content contained in the flow to appear on the page, the flow-name of the flow should match a region-name of one of the regions on the page.
 
-default values of flow name:
+#### default values of flow name:
 
 - xsl-region-body
 - xsl-region-start
