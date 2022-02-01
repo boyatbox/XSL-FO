@@ -200,5 +200,14 @@ When the first page of the chapter is being created, the page-position="first" c
 
 ## Text formatting:
 
- - text-align= "justify"
-    - text is aligned against both the left and right edges of the block. Space is inserted between words to achieve this effect. Setting text-align = "justify" does not align the last line of the paragraph, this is done using text-align-last = "justify".
+ - text-align= "justify": text is aligned against both the left and right edges of the block. Space is inserted between words to achieve this effect. Setting text-align = "justify" does not align the last line of the paragraph, this is done using text-align-last = "justify".
+    
+ - border:   When printed, a block may be split by a page break or a column break. What happens to the borders adjacent to the breakline? For some block types, you may want to box every part of the original block separately, i.e. draw a border line where the break occurs; this is the default behaviour in XSL FO (XSLFO). For some other blocks, you may prefer to "keep the box open" suppressing borders at column/page breaks. This behavior is controlled by a special component of the border's width — border-{side}-width.conditionality:
+```
+<fo:block border="thin blue groove"
+          border-before-width.conditionality="discard"
+          border-after-width.conditionality="discard">
+  If this block happens to be split by a page break,
+  no line will be drawn on either side of the break.
+</fo:block>
+```
