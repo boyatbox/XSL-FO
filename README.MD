@@ -242,3 +242,95 @@ When the first page of the chapter is being created, the page-position="first" c
 	</fo:page-sequence>
 </fo:root>
 ```
+
+---
+
+## Page sequence masters:
+
+Each page the formatter creates is associated with a master page from the fo:layout-master-set that defines how the page will look. The master-reference attribute of the fo:page-sequence element determines which master page this is. Listings 16-3 through 16-5 used a single fo:simple-master-page named A4 to fill this role, but it is not uncommon to have more than one master page. For example, you could use one master page for the first page of each chapter, a different one for all the subsequent left-hand pages, and a third for all the subsequent right-hand pages. In this case, the master pages might be grouped as part of a fo:page-sequence-master instead.
+
+The fo:page-sequence-master element is a child of the fo:layout-master-set that lists the order in which particular master pages will be instantiated using one or more of these three child elements:
+
+    - fo:single-page-master-reference
+    - fo:repeatable-page-master-reference
+    - fo:repeatable-page-master-alternatives
+
+The fo:single-page-master-reference and fo:repeatable-page-master-reference elements each have a master-reference attribute that specifies which fo:simple-master-page their pages are based on. The fo:repeatable-page-master-alternatives has child fo:conditional-page-master-reference elements that are instantiated based on various conditions. Each of these child fo:conditional-page-master-reference elements has a master-reference attribute that specifies which fo:simple-master-page to use if its condition is satisfied.
+
+### fo:single-page-master-reference:
+
+The simplest page master element is fo:single-page-master-reference whose master-reference attribute identifies one master page to be instantiated. For example, this fo:layout-master-set contains a fo:page-sequence-master element named contents that says that all text should be placed on a single instance of the master page named A4:
+```
+<fo:layout-master-set>
+
+  <fo:simple-page-master master-name="A4"
+      page-width="297mm"  page-height="210mm"
+      margin-top="0.5in"  margin-bottom="0.5in"
+      margin-left="0.5in" margin-right="0.5in">
+    <fo:region-body/>
+  </fo:simple-page-master>
+
+  <fo:page-sequence-master master-name="contents">
+    <fo:single-page-master-reference master-reference="A4"/>
+  </fo:page-sequence-master>
+
+</fo:layout-master-set>
+```
+This page sequence master only allows the creation of a single page. Technically, it’s an error if there’s more content than can fit on this one page. However, in practice, most formatters simply repeat the last page used until they have enough pages to hold all the content.
+
+Now consider this page sequence master:
+```
+<fo:page-sequence-master master-name="contents">
+  <fo:single-page-master-reference master-name="A4"/>
+  <fo:single-page-master-reference master-name="A4"/>
+</fo:page-sequence-master>
+```
+This provides for up to two pages, each based on the master page named A4. If the first page fills up, a second is created. If that page fills up, the formatter may throw an error, or it may create extra pages.
+
+The same technique can be used to apply different master pages. For example, this sequence specification bases the first page on the master page named front and the second on the master page named back:
+```
+<fo:page-sequence-master master-name="contents">
+  <fo:single-page-master-reference master-reference="front"/>
+  <fo:single-page-master-reference master-reference="back"/>
+</fo:page-sequence-master>
+```
+The first page the formatter creates will be based on the master page named front. The second page created will be based on the master page named back. If the second page fills up, the formatter may throw an error; or it may create extra pages based on back, the last master page instantiated.
+
+### fo:repeatable-page-master-reference:
+
+Of course, you usually don’t know in advance exactly how many pages there will be. The fo:repeatable-page-master-reference element specifies that as many pages as necessary will be used to hold the content, all based on a single master page. The master-reference attribute identifies which master page will be repeated. For example, this page sequence master will use as many copies of the master page named A4 as necessary to hold all the content:
+```
+<fo:page-sequence-master master-name="contents">
+  <fo:repeatable-page-master-reference master-reference="A4"/>
+</fo:page-sequence-master>
+```
+Alternately, you can set the maximum-repeats attribute of the fo:repeatable-page-master-reference element to limit the number of pages that will be created. For example, this fo:page-sequence-master generates at most 10 pages per document:
+```
+<fo:page-sequence-master master-name="contents">
+  <fo:repeatable-page-master-reference master-reference="A4" maximum-repeats="10"/>
+</fo:page-sequence-master>
+```
+This also lets you do things like using one master for the first 2 pages, another for the next 3 pages, and a third master for the next 10 pages.
+
+### fo:repeatable-page-master-alternatives:
+
+The fo:repeatable-page-master-alternatives element specifies different master pages for the first page, even pages, odd pages, blank pages, last even page, and last odd page. This is more designed for a chapter of a printed book where the first and last pages, as well the even and odd pages, traditionally have different margins, headers, and footers.
+
+Because a fo:repeatable-page-master-alternatives element needs to refer to more than one master page, it can’t use a master-reference attribute such as fo:single-page-master-reference and fo:repeatable-page-master-reference. Instead, it has fo:conditional-page-master-reference child elements. Each of these has a master-reference attribute that identifies the master page to instantiate given that condition. The conditions themselves are determined by three attributes:
+
+    - page-position–This attribute can be set to first, last, rest, or any to identify it as applying only to the first page, last page, any page except the first, or any page, respectively.
+    - odd-or-even–This attribute can be set to odd, even, or any to identify it as applying only to odd pages, only to even pages, or to all pages, respectively.
+    - blank-or-not-blank–This attribute can be set to blank, not-blank, or any to identify it as applying only to blank pages, only to pages that contain content, or to all pages, respectively.
+
+For example, this page sequence master says that the first page should be based on the master page named letter_first, but that all subsequent pages should use the master page named letter:
+```
+<fo:page-sequence-master master-name="contents">
+  <fo:repeatable-page-master-alternatives>
+    <fo:conditional-page-master-reference 
+      page-position="first" master-reference="letter_first"/>
+    <fo:conditional-page-master-reference 
+      page-position="rest"  master-reference="letter"/>
+  </fo:repeatable-page-master-alternatives>
+</fo:page-sequence-master master-reference="contents">
+```
+If the content overflows the first page, the remainder will be placed on a second page. If it overflows the second page, a third page will be created. As many pages as needed to hold all the content will be constructed.
