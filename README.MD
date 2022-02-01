@@ -75,7 +75,7 @@ Contains the actual text that will be placed on the pages, along with the instru
 
 The formatting engine uses the layout master set to create a page. Then it adds content to the page from the fo:page-sequence until the page is full. Then it creates the next page in the sequence and places the next batch of content on that page. This process continues until all the content has been positioned.
 
-When FO processor finds a page-sequence element it looks at the list of known simple-page-master and page-sequence-master elements (we have no page-sequence-master elements in this example) and finds one with a master-name attribute which equals the master-reference attribute on the page-sequence.
+When FO processor finds a page-sequence element it looks at the list of known simple-page-master and page-sequence-master elements and finds one with a master-name attribute which equals the master-reference attribute on the page-sequence.
 
 ### page-sequence:
 
