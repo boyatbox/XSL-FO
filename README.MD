@@ -251,9 +251,9 @@ Each page the formatter creates is associated with a master page from the fo:lay
 
 The fo:page-sequence-master element is a child of the fo:layout-master-set that lists the order in which particular master pages will be instantiated using one or more of these three child elements:
 
-    - fo:single-page-master-reference
-    - fo:repeatable-page-master-reference
-    - fo:repeatable-page-master-alternatives
+ - fo:single-page-master-reference
+ - fo:repeatable-page-master-reference
+ - fo:repeatable-page-master-alternatives
 
 The fo:single-page-master-reference and fo:repeatable-page-master-reference elements each have a master-reference attribute that specifies which fo:simple-master-page their pages are based on. The fo:repeatable-page-master-alternatives has child fo:conditional-page-master-reference elements that are instantiated based on various conditions. Each of these child fo:conditional-page-master-reference elements has a master-reference attribute that specifies which fo:simple-master-page to use if its condition is satisfied.
 
