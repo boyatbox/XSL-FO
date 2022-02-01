@@ -83,7 +83,12 @@ Following are the child possible elements of the fo:simple-page-master element:
 ### page-sequence:
 
 `<fo:flow flow-name="xsl-region-body">`
+`<static-content flow-name="footer">`
 
+- flow is used add content to body.
+- static-content is used to add content to header, footer or side panels.
+- The order of the static-content and flow elements is important. All
+  static-content elements must come before any flow elements.
 - flow-name maps the region of the page where the content will be placed.
 - one fo:page-sequence can not have multiple "fo:flow" declaration inside
 - the content of the flow will be poured into the page body region. If the content need more space page will be added until all content of flow is exhausted.
