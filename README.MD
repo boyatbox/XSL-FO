@@ -230,14 +230,15 @@ When the first page of the chapter is being created, the page-position="first" c
 	</fo:layout-master-set>
 	<fo:page-sequence master-reference="my-sequence">
 		<fo:flow flow-name="xsl-region-body" font="72pt Times">
-			<fo:block space-before="2in" space-after="2in">6         First block
-       </fo:block>
+			<fo:block space-before="2in" space-after="2in">
+				First block
+			</fo:block>
+			<fo:block break-before="page" space-before="2in" space-after="2in">        
+				Second block
+			</fo:block>
 			<fo:block break-before="page" space-before="2in" space-after="2in">
-         Second block
-       </fo:block>
-			<fo:block break-before="page" space-before="2in" space-after="2in">
-         Third block
-       </fo:block>
+				Third block
+			</fo:block>
 		</fo:flow>
 	</fo:page-sequence>
 </fo:root>
