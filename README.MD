@@ -24,6 +24,8 @@
 - https://www.xmlpdf.com/different-first-page.html
 - http://www.xmlpdf.com/builds/ibex.pdf
 - https://www.data2type.de/en/xml-xslt-xslfo/xsl-fo/xsl-fo-introduction/page-layout
+- http://zvon.org/xxl/xslfoReference/Output/index.html
+- https://www.xml.com/pub/a/2001/01/17/xsl-fo/index.html
 
 ---
 
